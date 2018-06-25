@@ -1,0 +1,8 @@
+# ignore rmp files
+*.rpm
+
+# Ignore vim's swap files
+*.swp
+
+# ignore the whole pkg/ directory
+pkg/
