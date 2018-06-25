@@ -3,7 +3,8 @@ echo ===============================
 echo == multi-ping test tool v1.0 ==
 echo ===============================
 
-#This is a comment.
+#This is a comment
+#Another comment.
 
 quiet_mode=0
 server_list=$@
