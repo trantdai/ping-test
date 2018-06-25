@@ -1,0 +1,30 @@
+version: 2
+
+jobs:
+  test:
+    machine: true
+    steps:
+      - checkout
+      - run: make test
+
+  package:
+    docker:
+      - image: centos
+    requires:
+        - test
+    steps:
+      - run: yum install epel-release -y
+      - run: yum install python-pip rpm-build python-devel -y
+      - run: |
+          yum group install "Development Tools" -y
+      - checkout
+      - run: pip install paramiko
+      - run: pip install ansible==2.2.1.0
+      - run: "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+      - run: make package
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - package
