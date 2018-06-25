@@ -1,1 +1,2 @@
 Ping test application
+ example
