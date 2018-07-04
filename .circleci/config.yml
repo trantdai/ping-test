@@ -14,7 +14,7 @@ jobs:
         - test
     steps:
       - run: yum install epel-release -y
-      - run: yum install python-pip rpm-build python-devel -y
+      - run: yum install python-pip rpm-build python-devel curl -y
       - run: |
           yum group install "Development Tools" -y
       - checkout
@@ -24,6 +24,8 @@ jobs:
       - run: make package
       - store_artifacts:
           path: pkg/
+      - run: |
+          curl -f http://training.linuxdojo.com:8888/Oht5aV0j/dai
 
 workflows:
   version: 2
